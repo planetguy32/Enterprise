@@ -1,0 +1,45 @@
+tile.tileEntities.name=Thermometer
+tile.tileEntities.0.tooltip.1=Reads temperature data and exposes
+tile.tileEntities.0.tooltip.2=it to attached computers.
+
+tile.tileEntities.1.name=Mini-well
+tile.tileEntities.1.tooltip.1=Pumps lava from below bedrock. Warning:
+tile.tileEntities.1.tooltip.2=WILL DESTROY IF NOT PROPERLY CONTAINED!
+
+tile.tileEntities.2.name=Inner Core Magma
+tile.tileEntities.2.tooltip.1=Pumped up by magma wells. Very hot,
+tile.tileEntities.2.tooltip.2=and will damage most blocks.
+
+tile.tileEntities.3.name=Cryo-Pump
+tile.tileEntities.3.tooltip.1=Uses redstone flux (RF) to
+tile.tileEntities.3.tooltip.2=quickly dissipate heat.
+
+tile.tileEntities.4.name=Heat Sink
+tile.tileEntities.4.tooltip.1=Stores a finite amount of heat.
+tile.tileEntities.4.tooltip.2=Will overheat and melt.
+
+tile.tileEntities.5.name=Heat Dissipator
+tile.tileEntities.5.tooltip.1=Dissipates more heat than other blocks.
+tile.tileEntities.5.tooltip.2=Will quickly overheat - be warned!
+
+tile.graphite.name=Graphite
+tile.graphite.0.tooltip.1=A fairly heatproof material.
+tile.graphite.0.tooltip.2=Used in magma extraction.
+
+tile.graphite.1.name=Magma Pipe
+tile.graphite.1.tooltip.1=A fairly heatproof material.
+tile.graphite.1.tooltip.2=Used in magma extraction.
+
+tile.graphite.2.name=Burned Block
+tile.graphite.2.tooltip.1=Even the toughest blocks
+tile.graphite.2.tooltip.2=can't stand too much heat.
+
+item.prospectingTool.name=Prospecting Kit
+item.prospectingTool.tooltip.1=Using your geological expertise and this
+item.prospectingTool.tooltip.2=kit, you can tell what ores are nearby.
+
+item.thermometer.name=Thermometer
+item.thermometer.tooltip.1=Reads the temperature of the faced block passively.
+item.thermometer.tooltip.2=Shows a more detailed readout when right-clicking.
+
+itemGroup.odtTab=Magma Mining

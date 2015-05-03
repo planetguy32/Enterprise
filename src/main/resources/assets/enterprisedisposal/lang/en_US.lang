@@ -1,0 +1,17 @@
+tile.disposer.name=Subatomic Shredder
+tile.disposer.tooltip.1=Slice it to atoms then slice up the atoms! Makes
+tile.disposer.tooltip.2=quark-gluon plasma, which is used in SAM condensers.
+
+tile.disposer.1.name=Supersonic Subatomic Shredder
+tile.disposer.1.tooltip.1=A faster subatomic shredder. Note: No input
+tile.disposer.1.tooltip.2=regulation, so it might get jammed.
+
+tile.disposer.2.name=Subatomic Matter Condenser
+tile.disposer.2.tooltip.1=Cools down quark-gluon plasma into subatomic
+tile.disposer.2.tooltip.2=matter, which can then be made into useful stuff.
+
+item.quarkGluonPlasma_bucket.name=Quark-Gluon Plasma Bucket
+
+item.subatomicMatter.name=Subatomic Matter
+item.subatomicMatter.tooltip.1=Can be formed into useful resources
+item.subatomicMatter.tooltip.2=in the convenience of your inventory.
