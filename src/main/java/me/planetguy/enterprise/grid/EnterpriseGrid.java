@@ -36,5 +36,7 @@ public class EnterpriseGrid {
 			i.setCreativeTab(tab);
 		}
 	}
+	
+	//TODO make the grid collect all supply and all demand, then distribute at tick end?
 
 }
