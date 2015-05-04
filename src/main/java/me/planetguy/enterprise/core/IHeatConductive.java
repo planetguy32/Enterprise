@@ -1,4 +1,4 @@
-package me.planetguy.ore.content.lavawell;
+package me.planetguy.enterprise.core;
 
 public interface IHeatConductive {
 	

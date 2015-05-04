@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.lib.util.Debug;
 import me.planetguy.ore.content.ODTContentPlugin;
 import me.planetguy.ore.gen.BlockMeta;

@@ -10,9 +10,9 @@ import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralProvider;
-import me.planetguy.core.cc.SimplePeripheralProvider;
-import me.planetguy.core.cc.SPMethod;
-import me.planetguy.core.cc.SimplePeripheral;
+import me.planetguy.enterprise.core.computercraft.SPMethod;
+import me.planetguy.enterprise.core.computercraft.SimplePeripheral;
+import me.planetguy.enterprise.core.computercraft.SimplePeripheralProvider;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 

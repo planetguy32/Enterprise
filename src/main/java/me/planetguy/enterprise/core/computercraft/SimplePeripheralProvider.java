@@ -1,4 +1,4 @@
-package me.planetguy.core.cc;
+package me.planetguy.enterprise.core.computercraft;
 
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.Optional.Interface;

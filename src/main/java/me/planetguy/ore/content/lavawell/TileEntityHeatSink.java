@@ -1,5 +1,7 @@
 package me.planetguy.ore.content.lavawell;
 
+import me.planetguy.enterprise.core.TEThermal;
+
 public class TileEntityHeatSink extends TEThermal {
 
 	@Override
@@ -9,7 +11,7 @@ public class TileEntityHeatSink extends TEThermal {
 
 	@Override
 	public int getHeatRadiated() {
-		return 0;
+		return 2;
 	}
 
 	@Override

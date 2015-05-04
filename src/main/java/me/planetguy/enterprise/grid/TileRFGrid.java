@@ -1,0 +1,88 @@
+package me.planetguy.enterprise.grid;
+
+import cofh.api.energy.IEnergyReceiver;
+import me.planetguy.enterprise.core.TEThermal;
+import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
+
+public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid2dMember {
+
+	int meta=0;
+	
+	int voltsTransportedLastTick=0;
+	
+	public void updateEntity(){
+		super.updateEntity();
+		voltsTransportedLastTick=0;
+	}
+	
+	public void setup(int meta){
+		this.meta=meta;
+	}
+	
+	@Override
+	public boolean canConnectEnergy(ForgeDirection from) {
+		return true;
+	}
+
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive,
+			boolean simulate) {
+		if(!simulate){
+			postEnergy1d(maxReceive);
+		}
+		return maxReceive;
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from) {
+		return 0;
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from) {
+		return Integer.MAX_VALUE;
+	}
+	
+	public void postEnergy1d(int energy){
+		int vecEnergy=(int) Math.sqrt(energy);
+		Search.dispatchEnergy(worldObj, xCoord, yCoord, zCoord, vecEnergy, vecEnergy);
+	}
+
+	@Override
+	public boolean isDestination() {
+		return false;
+	}
+
+	@Override
+	public boolean onTransport(int volts, int amps) {
+		voltsTransportedLastTick+=volts;
+		if(voltsTransportedLastTick>meta*30){
+			return true;
+		}
+		heat+=amps/30;
+		return false;
+	}
+
+	@Override
+	public int getMass() {
+		return 3000;
+	}
+
+	@Override
+	public int getHeatRadiated() {
+		return 2*meta;
+	}
+
+	@Override
+	public int meltingTime() {
+		return 300;
+	}
+
+	@Override
+	public int meltingTemp() {
+		return 600;
+	}
+
+}

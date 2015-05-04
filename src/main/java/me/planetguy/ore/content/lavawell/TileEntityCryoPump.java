@@ -1,5 +1,6 @@
 package me.planetguy.ore.content.lavawell;
 
+import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.lib.util.Debug;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;

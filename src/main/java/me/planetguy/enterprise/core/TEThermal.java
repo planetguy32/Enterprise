@@ -1,6 +1,7 @@
-package me.planetguy.ore.content.lavawell;
+package me.planetguy.enterprise.core;
 
 import me.planetguy.ore.content.ODTContentPlugin;
+import me.planetguy.ore.content.lavawell.BlockPassive;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -21,11 +22,11 @@ public abstract class TEThermal extends TileEntity implements IHeatConductive,IF
 	public void updateEntity(){
 		for(ForgeDirection dir:ForgeDirection.VALID_DIRECTIONS){
 			TileEntity nearbyTE=worldObj.getTileEntity(xCoord+dir.offsetX, yCoord+dir.offsetY, zCoord+dir.offsetZ);
-			if(nearbyTE instanceof TEThermal){
-				TEThermal thermalTE=(TEThermal) nearbyTE;
+			if(nearbyTE instanceof IHeatConductive){
+				IHeatConductive thermalTE=(IHeatConductive) nearbyTE;
 				int heats=redistributeHeat(this.getMass(), this.getHeat(), thermalTE.getMass(), thermalTE.getHeat());
 				this.heat=heats;
-				thermalTE.heat=heats;
+				thermalTE.setHeat(heats);
 			}
 		}
 		heat=Math.max(295, heat-this.getHeatRadiated());

@@ -5,6 +5,7 @@ import java.util.List;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.lib.prefab.BlockContainerBase;
 import me.planetguy.ore.content.ODTContentPlugin;
 import net.minecraft.client.renderer.texture.IIconRegister;

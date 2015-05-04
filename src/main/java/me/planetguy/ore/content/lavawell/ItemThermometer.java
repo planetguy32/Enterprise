@@ -3,6 +3,8 @@ package me.planetguy.ore.content.lavawell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import me.planetguy.enterprise.core.IHeatConductive;
+import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.lib.prefab.ItemBase;
 import me.planetguy.lib.util.Debug;
 import me.planetguy.ore.gen.ODTCommand;

@@ -1,4 +1,4 @@
-package me.planetguy.core.cc;
+package me.planetguy.enterprise.core.computercraft;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.RetentionPolicy;

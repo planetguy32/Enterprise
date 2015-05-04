@@ -1,6 +1,7 @@
 package me.planetguy.ore.content.lavawell;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.ore.content.ODTContentPlugin;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
