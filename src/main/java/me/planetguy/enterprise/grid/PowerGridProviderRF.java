@@ -35,24 +35,19 @@ public class PowerGridProviderRF implements IPowerGridProvider {
 
 				@Override
 				public boolean onTransport(int volts, int amps) {
-					try{
-						//overload
-						if(te.receiveEnergy(ForgeDirection.NORTH, volts*amps, true)<volts*amps){
-							return true;
-						}else{
-							te.receiveEnergy(ForgeDirection.NORTH, volts*amps, false);
-						}
-					}catch(NullPointerException ignored){
-						
-					}
 					return false;
 				}
 
 				@Override
-				public boolean isDestination() {
-					return true;
+				public int getMaximumCurrent(int volts) {
+					return (te.getMaxEnergyStored(ForgeDirection.DOWN)-te.getEnergyStored(ForgeDirection.DOWN))/volts;
 				}
-				
+
+				@Override
+				public int getPowerAmountToConsume() {
+					return te.receiveEnergy(ForgeDirection.DOWN, Integer.MAX_VALUE, true);
+				}
+
 			};
 		}
 		return null;

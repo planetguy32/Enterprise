@@ -1,10 +1,10 @@
 package me.planetguy.enterprise.grid;
 
-import java.awt.List;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
@@ -23,31 +23,45 @@ public class Search {
 	private Search(){}
 	
 	public static void dispatchEnergy(World w, int x, int y, int z, int current, int voltage){
-		Pair path=findSink(w,x,y,z);
-		if(path!=null){
-			boolean safeTransfer=true;
+		List<Pair> paths=findSinks(w,x,y,z);
+		int demandCurrent=0;
+		for(Pair path:paths){
+			int localDC=PowerGrid2dRegistry.getBinding(path.record.tileEntity).getMaximumCurrent(voltage);
+			path.demand=localDC;
+			demandCurrent+=localDC;
+		}
+		if(demandCurrent==0)
+			return; //check for zero division
+		for(Pair path:paths){
 			BlockRecord destination=path.record;
+			double demandFraction=path.demand/(double)(demandCurrent);
+			int currentHere=(int)(current*demandFraction);
+			if(currentHere==0)
+				continue; //don't go all over trying to give away nothing
+			boolean ok=true;
 			while(path != null){
 				IPowerGrid2dMember grid=PowerGrid2dRegistry.getBinding(path.record.tileEntity);
-				if(grid==null || grid.onTransport(voltage, current)){
-					safeTransfer=false;
+				if(grid!=null && !grid.onTransport(voltage, currentHere)){
+					path=path.previous;
+				}else{
+					ok=false;
 				}
-				path=path.previous;
 			}
-			if(safeTransfer){
+			if(ok){
 				IPowerGrid2dMember dest=PowerGrid2dRegistry.getBinding(destination.tileEntity);
-				dest.onTransport(current, voltage);
+				dest.onTransport(currentHere, voltage);
 			}
 		}
 	}
-	
-	public static Pair findSink(World w, int x, int y, int z){
+
+	private static List<Pair> findSinks(World w, int x, int y, int z){
 		return new Search().findSinkDijkstra(w,x,y,z);
 	}
 	
-	public Pair findSinkDijkstra(World w, int x, int y, int z){
+	private List<Pair> findSinkDijkstra(World w, int x, int y, int z){
 		TreeSet<BlockRecord> allSearched=new TreeSet<BlockRecord>();
 		PriorityQueue<Pair> todos=new PriorityQueue<Pair>();
+		List<Pair> dests=new ArrayList<Pair>();
 		source=new BlockRecord(x,y,z);
 		todos.add(new Pair(source, null));
 		while(!todos.isEmpty()){
@@ -61,18 +75,19 @@ public class Search {
 					if(bind!=null && bind.canConnectEnergy(dir.getOpposite())){
 						Pair p=new Pair(r, next);
 						todos.add(p);
-						if(bind.isDestination())
-							return p;
+						if(bind.getPowerAmountToConsume()>0)
+							dests.add(p);
 					}
 				}
 			}
 		}
-		return null;
+		return dests;
 	}
 	
 	private class Pair implements Comparable<Pair>{
 		public final BlockRecord record;
 		public final Pair previous;
+		public int demand;
 		public Pair(BlockRecord r, Pair last){
 			record=r;
 			previous=last;

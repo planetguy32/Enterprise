@@ -13,6 +13,8 @@ public interface IPowerGrid2dMember {
 	 */
 	public boolean onTransport(int volts, int amps);
 	
-	public boolean isDestination();
+	public int getMaximumCurrent(int volts);
+
+	int getPowerAmountToConsume();
 
 }

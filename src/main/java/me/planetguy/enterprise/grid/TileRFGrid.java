@@ -51,8 +51,8 @@ public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid
 	}
 
 	@Override
-	public boolean isDestination() {
-		return false;
+	public int getPowerAmountToConsume() {
+		return 0;
 	}
 
 	@Override
@@ -83,6 +83,11 @@ public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid
 	@Override
 	public int meltingTemp() {
 		return 600;
+	}
+
+	@Override
+	public int getMaximumCurrent(int volts) {
+		return 0;
 	}
 
 }
