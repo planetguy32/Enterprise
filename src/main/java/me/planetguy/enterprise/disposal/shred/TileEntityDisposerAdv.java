@@ -6,6 +6,9 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class TileEntityDisposerAdv extends TileEntityDisposer {
 	
+	//Here this means speed
+	//protected int tileState;
+	
 	public static int maxSpeed=650;
 	
 	public static int speedPerOperation=10;
@@ -13,7 +16,7 @@ public class TileEntityDisposerAdv extends TileEntityDisposer {
     public void updateEntity() {
     	boolean isStuck=false;
     	if(inProgressStack!=null){
-    		if(10*inProgressStack.stackSize>tileState){
+    		if(speedPerOperation*inProgressStack.stackSize>tileState){
     			int fullyPossibleOperations=tileState/speedPerOperation;
     			tileState=0; //speed
     			isStuck=true;

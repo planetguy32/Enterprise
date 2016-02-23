@@ -1,7 +1,6 @@
 package me.planetguy.ore.content.lavawell;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.ore.content.ODTContentPlugin;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -21,16 +20,10 @@ public class TileEntityMiniWell extends TEThermal {
 	
 	public int timeOverMeltingPoint=0;
 	
-	public static final int MASS=5000;
-	
-	public static final int meltingPoint=2000;
-	
-	public static final int meltingTime=300;
-	
-	public static final int coolingPerTick=1;
-	
 	public void updateEntity(){
 		super.updateEntity();
+		if(worldObj.isRemote)
+			return;
 		TileEntity lavaPuddle=worldObj.getTileEntity(xCoord, yCoord+1, zCoord);
 		if(!(lavaPuddle instanceof TileEntityLavaPuddle)){
 			if(		worldObj.isAirBlock(xCoord, yCoord+1, zCoord)
@@ -39,7 +32,7 @@ public class TileEntityMiniWell extends TEThermal {
 					)
 				worldObj.setBlock(xCoord, yCoord+1, zCoord, ODTContentPlugin.tileEntity, 2, 0x02);
 		}else{
-			((TileEntityLavaPuddle)lavaPuddle).extrudeLava(30);//heat/500);
+			((TileEntityLavaPuddle)lavaPuddle).extrudeLava(5);//heat/500);
 		}
 	}
 	
@@ -49,8 +42,8 @@ public class TileEntityMiniWell extends TEThermal {
 			posY--;
 			Block block=worldObj.getBlock(xCoord, posY, zCoord);
 			int meta=worldObj.getBlockMetadata(xCoord, posY, zCoord);
-			if( (block!=BlockPassive.instance && meta!=1) //BlockPassive
-					&& block != Blocks.bedrock){ //Bedrock
+			if( (block!=BlockLavaMachinery.instance && meta!=8)
+					&& block != Blocks.bedrock){
 				return false;
 			}
 		}
@@ -59,22 +52,27 @@ public class TileEntityMiniWell extends TEThermal {
 	
 	@Override
 	public int getMass() {
-		return MASS;
+		return BLMBalance.MASS_MINI_WELL;
+	}
+
+	@Override
+	public float getFractionRadiated() {
+		return BLMBalance.RADIATION_MINI_WELL;
 	}
 
 	@Override
 	public int meltingTime() {
-		return this.meltingTime;
+		return BLMBalance.MTIME_MINI_WELL;
 	}
 
 	@Override
 	public int meltingTemp() {
-		return meltingPoint;
+		return BLMBalance.MTEMP_MINI_WELL;
 	}
 
 	@Override
-	public int getHeatRadiated() {
-		return 1;
+	public float getHeatAvailable() {
+		return BLMBalance.AVAILABLE_MINI_WELL;
 	}
 
 }

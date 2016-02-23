@@ -18,7 +18,7 @@ import me.planetguy.lib.PLHelper;
 import me.planetguy.lib.prefab.CreativeTabPrefab;
 import me.planetguy.lib.prefab.IPrefabItem;
 import me.planetguy.ore.content.lavawell.BlockLavaMachinery;
-import me.planetguy.ore.content.lavawell.BlockPassive;
+import me.planetguy.ore.content.lavawell.ItemCleanupTool;
 import me.planetguy.ore.content.lavawell.ItemThermometer;
 import me.planetguy.ore.content.prospecting.ProspectingTool;
 import me.planetguy.ore.gen.OreDistributionTool;
@@ -37,8 +37,8 @@ public class ODTContentPlugin {
 	
 	public static HashMap<String, IPrefabItem> content=new HashMap<String, IPrefabItem>();
 	
-	public static Item prospectingTool, thermometer;
-	public static Block tileEntity, deco;
+	public static Item prospectingTool, thermometer, cleanupTool;
+	public static Block tileEntity;
 	
 	PLHelper helper;
 	
@@ -50,9 +50,9 @@ public class ODTContentPlugin {
 		Configuration conf=new Configuration(OreDistributionTool.confFile); //share ODT's config
 		conf.load();
 		prospectingTool=(Item) helper.loadItem(ProspectingTool.class, content);
+		cleanupTool=(Item) helper.loadItem(ItemCleanupTool.class, content);
 		thermometer=(Item) helper.loadItem(ItemThermometer.class, content);
 		
-		deco=(Block) helper.loadBlock(BlockPassive.class, content);
 		tileEntity=(Block) helper.loadContainer(BlockLavaMachinery.class, content);
 
 		
@@ -63,16 +63,6 @@ public class ODTContentPlugin {
 				Character.valueOf('g'),new ItemStack(Blocks.glass),
 				Character.valueOf('r'),new ItemStack(Items.redstone),
 				Character.valueOf('b'),new ItemStack(Items.glass_bottle)
-				);
-		
-		GameRegistry.addShapedRecipe(new ItemStack(ODTContentPlugin.tileEntity, 1, 1),
-				"gbg",
-				"l|l",
-				"g|g",
-				Character.valueOf('g'),new ItemStack(BlockPassive.instance, 1,0),
-				Character.valueOf('|'),new ItemStack(BlockPassive.instance, 1,1),
-				Character.valueOf('b'),new ItemStack(Items.bucket),
-				Character.valueOf('l'),new ItemStack(Blocks.glass)
 				);
 		
 		conf.save();

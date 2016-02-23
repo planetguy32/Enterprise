@@ -1,7 +1,7 @@
 package me.planetguy.enterprise.grid;
 
 import cofh.api.energy.IEnergyReceiver;
-import me.planetguy.enterprise.core.TEThermal;
+import me.planetguy.ore.content.lavawell.TEThermal;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -71,8 +71,8 @@ public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid
 	}
 
 	@Override
-	public int getHeatRadiated() {
-		return 2*meta;
+	public float getFractionRadiated() {
+		return 0;
 	}
 
 	@Override
@@ -88,6 +88,12 @@ public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid
 	@Override
 	public int getMaximumCurrent(int volts) {
 		return 0;
+	}
+
+	@Override
+	public float getHeatAvailable() {
+		// TODO Auto-generated method stub
+		return 0.5f;
 	}
 
 }

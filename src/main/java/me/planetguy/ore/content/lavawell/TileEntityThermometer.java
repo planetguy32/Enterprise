@@ -22,7 +22,7 @@ public class TileEntityThermometer extends TileEntity{
 		SimplePeripheral.registerSimplePeripheral(TileEntityThermometer.class);
 	}
 
-	private volatile int cachedTemperature;
+	private volatile float cachedTemperature;
 	
 	public void updateEntity(){
 		cachedTemperature=0;

@@ -13,9 +13,11 @@ import me.planetguy.enterprise.disposal.shred.GuiDisposer;
 import me.planetguy.enterprise.disposal.shred.ItemSubatomicMatter;
 import me.planetguy.lib.PLHelper;
 import me.planetguy.lib.prefab.GuiHandlerPrefab;
+import me.planetguy.lib.prefab.GuiPrefab;
 import me.planetguy.lib.prefab.IPrefabItem;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -27,6 +29,9 @@ public class EnterpriseDisposal {
 	public static final String modID="enterprisedisposal";
 	
 	public static Fluid qgp;
+	
+	@SidedProxy(clientSide="me.planetguy.enterprise.disposal.ProxyClient", serverSide="me.planetguy.enterprise.disposal.ProxyCommon")
+	public static ProxyCommon proxy;
 	
 	public static HashMap<String, IPrefabItem> map=new HashMap<String, IPrefabItem>();
 	
@@ -60,12 +65,7 @@ public class EnterpriseDisposal {
 				ContainerDisposer.class,
 				ContainerDisposer.class,
 				ContainerDisposer.class,
-		}, new Class[]{
-				//client
-				GuiDisposer.class,
-				GuiDisposer.class,
-				GuiDisposer.class,
-		});
+		}, (Class<GuiPrefab>[]) proxy.getClientClasses());
 	}
 	
 	@EventHandler

@@ -76,17 +76,11 @@ public class ODTGen {
 	}
 	
 	public static BlockMeta getOre(World w, int cx, int cz){
-		if(!w.isRemote){
-     			Debug.dbg("Hello!");
-		}
 		double value=new XorShift(cx, cz, w.getSeed()).nextDouble();
-		Debug.dbg(value);
 		for(BlockMeta ore:OreDistributionTool.oreIMPsSet){
 			OreEntry shareConsumed=(OreDistributionTool.oreMap.get(ore));
 			value-=shareConsumed.mineFrequency;
-			Debug.dbg("   "+value);
 			if(value < 0){
-				Debug.dbg(ore.block);
 				return ore;
 			}
 		}

@@ -3,8 +3,6 @@ package me.planetguy.ore.content.lavawell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import me.planetguy.enterprise.core.IHeatConductive;
-import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.lib.prefab.ItemBase;
 import me.planetguy.lib.util.Debug;
 import me.planetguy.ore.gen.ODTCommand;
@@ -27,7 +25,7 @@ public class ItemThermometer extends ItemBase {
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer player, World w, int x, int y, int z, int side, float par8, float par9, float par10){
 		if(FMLCommonHandler.instance().getEffectiveSide()==Side.CLIENT)
 			return false;
-		int temp=getTemperature(w, x, y, z, side);
+		float temp=getTemperature(w, x, y, z, side);
 		if(temp!=-1){
 			double overheating=getOverHeatedTime(w,x,y,z,side);
 			boolean stillOverheating=isActivelyOverheating(w,x,y,z,side);
@@ -38,10 +36,10 @@ public class ItemThermometer extends ItemBase {
 		}
 	}
 	
-	public static int getTemperature(World w, int x, int y, int z, int side){
+	public static float getTemperature(World w, int x, int y, int z, int side){
 		TileEntity te=w.getTileEntity(x,y,z);
-		if(te instanceof IHeatConductive){
-			return ((IHeatConductive)te).getHeat();
+		if(te instanceof TEThermal){
+			return ((TEThermal)te).getHeat();
 		}else
 			return -1;
 	}
@@ -69,8 +67,8 @@ public class ItemThermometer extends ItemBase {
 	    		int ym=Minecraft.getMinecraft().objectMouseOver.blockY;
 	    		int zm=Minecraft.getMinecraft().objectMouseOver.blockZ;
 	    		TileEntity te=w.getTileEntity(xm,ym,zm);
-	    		if(te instanceof IHeatConductive){
-	    			stk.setItemDamage(this.getMaxDamage()-((IHeatConductive)te).getHeat());
+	    		if(te instanceof TEThermal){
+	    			stk.setItemDamage((int) (this.getMaxDamage()-((TEThermal)te).getHeat()));
 	    		}
 	    	}
 		}else

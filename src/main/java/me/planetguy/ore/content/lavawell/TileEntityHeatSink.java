@@ -1,27 +1,31 @@
 package me.planetguy.ore.content.lavawell;
 
-import me.planetguy.enterprise.core.TEThermal;
 
 public class TileEntityHeatSink extends TEThermal {
 
 	@Override
 	public int getMass() {
-		return TileEntityMiniWell.MASS*2;
+		return BLMBalance.MASS_HEAT_SINK;
 	}
 
 	@Override
-	public int getHeatRadiated() {
-		return 2;
+	public float getFractionRadiated() {
+		return BLMBalance.RADIATION_HEAT_SINK;
 	}
 
 	@Override
 	public int meltingTime() {
-		return TileEntityMiniWell.meltingTime;
+		return BLMBalance.MTIME_HEAT_SINK;
 	}
 
 	@Override
 	public int meltingTemp() {
-		return TileEntityMiniWell.meltingPoint;
+		return BLMBalance.MTEMP_HEAT_SINK;
+	}
+
+	@Override
+	public float getHeatAvailable() {
+		return BLMBalance.AVAILABLE_HEAT_SINK;
 	}
 
 }

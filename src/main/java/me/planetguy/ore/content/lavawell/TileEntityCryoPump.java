@@ -1,6 +1,5 @@
 package me.planetguy.ore.content.lavawell;
 
-import me.planetguy.enterprise.core.TEThermal;
 import me.planetguy.lib.util.Debug;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -53,26 +52,10 @@ public class TileEntityCryoPump extends TEThermal implements IEnergyHandler{
 	}
 
 	@Override
-	public int getHeatRadiated() {
+	public float getFractionRadiated() {
 		int energyToUse=energy/100;
-		Debug.dbg(energy+"/"+energyToUse);
 		energy-=energyToUse;
-		return energyToUse;
-	}
-
-	@Override
-	public int meltingTime() {
-		return TileEntityMiniWell.meltingTime;
-	}
-
-	@Override
-	public int meltingTemp() {
-		return TileEntityMiniWell.meltingPoint;
-	}
-
-	@Override
-	public int getMass() {
-		return TileEntityMiniWell.MASS;
+		return energyToUse * BLMBalance.RADIATION_CRYO_PUMP;
 	}
 
 	@Override
@@ -80,5 +63,24 @@ public class TileEntityCryoPump extends TEThermal implements IEnergyHandler{
 		return true;
 	}
 	
+	@Override
+	public int getMass() {
+		return BLMBalance.MASS_CRYO_PUMP;
+	}
+
+	@Override
+	public int meltingTime() {
+		return BLMBalance.MTIME_CRYO_PUMP;
+	}
+
+	@Override
+	public int meltingTemp() {
+		return BLMBalance.MTEMP_CRYO_PUMP;
+	}
+
+	@Override
+	public float getHeatAvailable() {
+		return BLMBalance.AVAILABLE_CRYO_PUMP;
+	}
 
 }
