@@ -1,8 +1,5 @@
 package me.planetguy.ore.gen;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 class OreEntry{
 
 	public final double mineDensity,mineFrequency;

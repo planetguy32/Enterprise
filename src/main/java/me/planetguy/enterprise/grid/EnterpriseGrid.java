@@ -2,16 +2,15 @@ package me.planetguy.enterprise.grid;
 
 import java.util.HashMap;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import me.planetguy.lib.PLHelper;
 import me.planetguy.lib.prefab.CreativeTabPrefab;
 import me.planetguy.lib.prefab.IPrefabItem;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 
 @Mod(modid="enterprisegrid")
 public class EnterpriseGrid {

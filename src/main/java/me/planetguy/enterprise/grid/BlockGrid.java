@@ -2,6 +2,8 @@ package me.planetguy.enterprise.grid;
 
 import java.util.List;
 
+import me.planetguy.lib.prefab.BlockContainerBase;
+import me.planetguy.lib.util.Debug;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -9,8 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import me.planetguy.lib.prefab.BlockContainerBase;
-import me.planetguy.lib.util.Debug;
 
 public class BlockGrid extends BlockContainerBase {
 

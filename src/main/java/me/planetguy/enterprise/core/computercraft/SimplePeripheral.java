@@ -1,9 +1,6 @@
 package me.planetguy.enterprise.core.computercraft;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.HashMap;
-
+/*
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.Optional.Interface;
 
@@ -14,14 +11,16 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 @Optional.InterfaceList({
 	@Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
 })
-public class SimplePeripheral implements IPeripheral{
+*/
+public class SimplePeripheral /*implements IPeripheral*/{
 	
+	/*
 	public static HashMap<Class, SPReflection> spMap=new HashMap<Class, SPReflection>();
-	
+	*/
 	public static void registerSimplePeripheral(Class c){
-		spMap.put(c, new SPReflection(c));
+		//spMap.put(c, new SPReflection(c));
 	}
-	
+	/*
 	SPReflection spr;
 	Object target;
 	
@@ -70,5 +69,6 @@ public class SimplePeripheral implements IPeripheral{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	*/
 
 }

@@ -1,7 +1,6 @@
 package me.planetguy.ore.content.prospecting;
 
 import me.planetguy.ore.content.ODTContentPlugin;
-import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;

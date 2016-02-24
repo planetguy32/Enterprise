@@ -1,40 +1,28 @@
 package me.planetguy.ore.gen;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.BitSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import com.google.common.eventbus.Subscribe;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IntHashMap;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
-import net.minecraftforge.event.terraingen.PopulateChunkEvent;
-import net.minecraftforge.event.world.ChunkEvent;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.OreDictionary.OreRegisterEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLLoadEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
+import net.minecraftforge.oredict.OreDictionary.OreRegisterEvent;
 
 @Mod(modid = "enterpriseores", version="0.1")
 public class OreDistributionTool {

@@ -2,7 +2,6 @@ package me.planetguy.enterprise.disposal.shred;
 
 import cofh.api.energy.IEnergyHandler;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;

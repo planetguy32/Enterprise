@@ -1,19 +1,13 @@
 package me.planetguy.ore.content;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlockWithMetadata;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
-import me.planetguy.gizmos.GuiHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import me.planetguy.lib.PLHelper;
 import me.planetguy.lib.prefab.CreativeTabPrefab;
 import me.planetguy.lib.prefab.IPrefabItem;
@@ -22,13 +16,15 @@ import me.planetguy.ore.content.lavawell.ItemCleanupTool;
 import me.planetguy.ore.content.lavawell.ItemThermometer;
 import me.planetguy.ore.content.prospecting.ProspectingTool;
 import me.planetguy.ore.gen.OreDistributionTool;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.config.Configuration;
 
 @Mod(modid=ODTContentPlugin.modID, version="0.1.1", dependencies="required-after:enterpriseores")
 public class ODTContentPlugin {

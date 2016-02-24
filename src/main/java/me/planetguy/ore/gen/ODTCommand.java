@@ -1,7 +1,6 @@
 package me.planetguy.ore.gen;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import me.planetguy.lib.include.it.unimi.dsi.util.XorShift;
 import net.minecraft.command.CommandBase;

@@ -1,20 +1,13 @@
 package me.planetguy.enterprise.grid;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
 import java.util.TreeSet;
 
 import me.planetguy.lib.util.BlockRecord;
-import me.planetguy.lib.util.Debug;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import cofh.api.energy.IEnergyReceiver;
 
 public class Search {
 	

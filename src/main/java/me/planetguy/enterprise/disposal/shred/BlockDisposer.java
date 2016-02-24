@@ -1,11 +1,11 @@
 package me.planetguy.enterprise.disposal.shred;
 
+import me.planetguy.lib.prefab.BlockContainerBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import me.planetguy.lib.prefab.BlockContainerBase;
 
 public class BlockDisposer extends BlockContainerBase {
 

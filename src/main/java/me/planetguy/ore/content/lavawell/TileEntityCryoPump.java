@@ -1,10 +1,8 @@
 package me.planetguy.ore.content.lavawell;
 
-import me.planetguy.lib.util.Debug;
+import cofh.api.energy.IEnergyHandler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
-import cofh.api.energy.IEnergyHandler;
-import cpw.mods.fml.common.Optional;
 
 //@Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHCore")
 public class TileEntityCryoPump extends TEThermal implements IEnergyHandler{

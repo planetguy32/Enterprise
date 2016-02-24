@@ -2,7 +2,6 @@ package me.planetguy.enterprise.grid;
 
 import java.util.HashMap;
 
-import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;

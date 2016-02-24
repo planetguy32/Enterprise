@@ -1,19 +1,9 @@
 package me.planetguy.enterprise.disposal.shred;
 
-import cofh.api.energy.IEnergyHandler;
 import me.planetguy.enterprise.disposal.EnterpriseDisposal;
-import me.planetguy.lib.util.Debug;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler;
 
 public class TileEntityDisposer extends TileEntityBase {
 	

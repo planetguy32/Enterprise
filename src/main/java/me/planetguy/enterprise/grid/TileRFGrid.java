@@ -2,8 +2,6 @@ package me.planetguy.enterprise.grid;
 
 import cofh.api.energy.IEnergyReceiver;
 import me.planetguy.ore.content.lavawell.TEThermal;
-import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid2dMember {

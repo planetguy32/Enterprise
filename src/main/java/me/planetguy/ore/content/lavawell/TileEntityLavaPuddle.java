@@ -2,19 +2,14 @@ package me.planetguy.ore.content.lavawell;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.BitSet;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 
-import me.planetguy.lib.util.Debug;
 import me.planetguy.ore.content.ODTContentPlugin;
 import me.planetguy.ore.gen.BlockMeta;
 import me.planetguy.ore.gen.ODTGen;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 

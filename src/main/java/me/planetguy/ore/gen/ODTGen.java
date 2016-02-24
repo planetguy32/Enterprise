@@ -3,8 +3,6 @@ package me.planetguy.ore.gen;
 import java.util.ArrayList;
 
 import me.planetguy.lib.include.it.unimi.dsi.util.XorShift;
-import me.planetguy.lib.util.Debug;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;

@@ -1,15 +1,12 @@
 package me.planetguy.ore.content.lavawell;
 
-import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
 import me.planetguy.lib.prefab.ItemBase;
-import me.planetguy.lib.util.Debug;
 import me.planetguy.ore.gen.ODTCommand;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

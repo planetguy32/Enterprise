@@ -2,26 +2,23 @@ package me.planetguy.enterprise.disposal;
 
 import java.util.HashMap;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import me.planetguy.enterprise.disposal.shred.BlockDisposer;
-import me.planetguy.enterprise.disposal.shred.ContainerDisposer;
-import me.planetguy.enterprise.disposal.shred.FluidQGP;
-import me.planetguy.enterprise.disposal.shred.GuiDisposer;
-import me.planetguy.enterprise.disposal.shred.ItemSubatomicMatter;
-import me.planetguy.lib.PLHelper;
-import me.planetguy.lib.prefab.GuiHandlerPrefab;
-import me.planetguy.lib.prefab.GuiPrefab;
-import me.planetguy.lib.prefab.IPrefabItem;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
+import me.planetguy.enterprise.disposal.shred.BlockDisposer;
+import me.planetguy.enterprise.disposal.shred.ContainerDisposer;
+import me.planetguy.enterprise.disposal.shred.FluidQGP;
+import me.planetguy.enterprise.disposal.shred.ItemSubatomicMatter;
+import me.planetguy.lib.PLHelper;
+import me.planetguy.lib.prefab.GuiHandlerPrefab;
+import me.planetguy.lib.prefab.GuiPrefab;
+import me.planetguy.lib.prefab.IPrefabItem;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraftforge.fluids.Fluid;
 
 @Mod(modid = EnterpriseDisposal.modID)
 public class EnterpriseDisposal {
