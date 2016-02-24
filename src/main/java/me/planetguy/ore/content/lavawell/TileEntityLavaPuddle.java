@@ -33,8 +33,10 @@ public class TileEntityLavaPuddle extends TEThermal{
 
 	public void updateEntity(){
 		super.updateEntity();
-		if(Math.random()<0.05)
+		if(Math.random()<0.05) {
 			doBreaking();
+			heat--;
+		}
 	}
 	
 	public void melt(){
@@ -73,11 +75,13 @@ public class TileEntityLavaPuddle extends TEThermal{
 				worldObj.setBlockMetadataWithNotify(x, y, z, 2, 0x02);
 			else if(id==Blocks.flowing_water || id==Blocks.water){
 				worldObj.setBlock(x, y, z, Blocks.air);
-				heat--;
+				heat-=10;
 			}else if(worldObj.getTileEntity(x,y,z)!=null){
 				worldObj.setBlock(x, y, z, ODTContentPlugin.tileEntity, 6, 2);//burned block
-			}else if(canReplace(x,y,z))
+			}else if(canReplace(x,y,z)) {
 				worldObj.setBlock(x, y, z, Blocks.flowing_lava, 2, 0x02);
+				heat--;
+			}
 	}
 
 	public void extrudeLava(int oldMax){
