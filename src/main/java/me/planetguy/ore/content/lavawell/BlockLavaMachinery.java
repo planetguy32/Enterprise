@@ -38,10 +38,9 @@ public class BlockLavaMachinery extends BlockContainerBase{
 	public BlockLavaMachinery() {
 		super(ODTContentPlugin.graphite, "tileEntities", tileEntities);
 
-
 		this.setLightLevel(1.0f);
 
-		GameRegistry.addShapedRecipe(new ItemStack(ODTContentPlugin.tileEntity, 1, 1),
+		GameRegistry.addShapedRecipe(new ItemStack(this, 1, 1),
 				"gbg",
 				"l|l",
 				"g|g",
