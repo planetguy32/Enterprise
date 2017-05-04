@@ -20,5 +20,19 @@ public class BlockMeta {
 	public String toString(){
 		return new ItemStack(block, 1, meta).getDisplayName();
 	}
-
+	
+	public int hashCode(){
+		return block.hashCode() * Integer.hashCode(meta);
+	}
+	
+	public boolean equals(Object o){
+		if(o instanceof BlockMeta)
+			return equals((BlockMeta)o);
+		return false;
+	}
+	
+	public boolean equals(BlockMeta bm){
+		return bm.block == block && bm.meta == meta;
+	}
+	
 }

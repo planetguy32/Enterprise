@@ -8,7 +8,7 @@ public class TileEntityHeatDissipator extends TEThermal {
 	}
 
 	@Override
-	public float getFractionRadiated() {
+	public float getRadiationToEnvironment() {
 		return BLMBalance.RADIATION_HEAT_DISSIPATOR;
 	}
 

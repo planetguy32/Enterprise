@@ -3,6 +3,7 @@ package me.planetguy.ore.gen;
 import java.util.ArrayList;
 
 import me.planetguy.lib.include.it.unimi.dsi.util.XorShift;
+import me.planetguy.lib.util.Debug;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -10,15 +11,18 @@ import net.minecraft.world.WorldServer;
 
 public class ODTGen {
 	
-	public static String map(EntityPlayerMP player, int squareSize){
+	public static String map(World w, int squareSize, int cx0, int cz0){
 		String result="======Ore seams======\n";
-		int cx0=player.chunkCoordX;
-		int cz0=player.chunkCoordZ;
 		ArrayList<Integer> ints=new ArrayList<Integer>();
-		for(int i=-squareSize; i<=squareSize; i++){
+		for(int i=squareSize; i>=-squareSize; i--){
 			for(int j=-squareSize; j<=squareSize; j++){
-				BlockMeta ore=getOre(player.worldObj, cz0+i, cx0+j);
-				result += (ore!=null) ? "X" : (i==0||j==0) ?  ((j==0&&i==-squareSize) ? "N" : "#") : "O";
+				BlockMeta ore=getOre(w, cz0+i, cx0+j);
+				if(ore != null)
+					result += "X";
+				else if(i==0 || j==0)
+					result += "#";
+				else
+					result += "_";
 			}
 			result+="\n";
 		}
@@ -42,6 +46,7 @@ public class ODTGen {
 	public static void repopulateOres(WorldServer w, int cx, int cz){
 		prePopulate(w,cx,cz, new XorShift(cx, cz, w.getSeed()));
 		BlockMeta ore=getOre(w, cx, cz);
+ 		Debug.dbg(cx+" "+cz+": Generating "+ore);
 		if(ore!=null)
 			repopulateOre(w,cx, cz, ore, new XorShift(cx, cz, w.getSeed()));
 	}
@@ -57,6 +62,8 @@ public class ODTGen {
 					if(OreDistributionTool.removeTraceOres &&OreDistributionTool.oreIMPsSet.contains(blockIMP)){ //remove ore if it should be generated elsewhere
 						w.setBlock(x, y,z, Blocks.stone);
 					}
+					
+					//Trace ores - they're available everywhere, in seams of one
 					if(OreDistributionTool.traceOreFactor!=0&&w.getBlock(x, y, z)==Blocks.stone){
 						double value=r.nextDouble()/OreDistributionTool.traceOreFactor;
 						for(BlockMeta ore:OreDistributionTool.oreIMPsSet){

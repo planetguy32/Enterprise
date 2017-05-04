@@ -30,10 +30,12 @@ public class ODTCommand extends CommandBase{
 			String[] astring) {
 		if(sender instanceof EntityPlayerMP){
 			if(astring.length==1){
+				int px = sender.getPlayerCoordinates().posX/16 - 1;
+				int pz = sender.getPlayerCoordinates().posZ/16 - 1;
 				String c=astring[0];
 				boolean isPlayerOp=((EntityPlayerMP) sender).mcServer.getConfigurationManager().func_152607_e(((EntityPlayerMP) sender).getGameProfile());
 				if(c.equals("repop")&&isPlayerOp){
-					ODTGen.repopulateOres((WorldServer) sender.getEntityWorld(), sender.getPlayerCoordinates().posX/16, sender.getPlayerCoordinates().posZ/16);
+					ODTGen.repopulateOres((WorldServer) sender.getEntityWorld(), px, pz);
 					tell("Repopulated ores.",sender);
 				}else if(c.equals("info")&&isPlayerOp){
 					ItemStack hand=((EntityPlayer)sender).getCurrentEquippedItem();
@@ -43,9 +45,9 @@ public class ODTCommand extends CommandBase{
 					tell("Reloaded ODT config.",sender);
 				}else if(c.equals("prospect")&&
 						(OreDistributionTool.allowProspecting||isPlayerOp)){ //can prospect if allowed, or force if op
-					prospect((WorldServer) sender.getEntityWorld(), sender.getPlayerCoordinates().posX/16, sender.getPlayerCoordinates().posZ/16, (EntityPlayer) sender);
+					prospect((WorldServer) sender.getEntityWorld(), px, pz, (EntityPlayer) sender);
 				}else if(c.equals("map") &&isPlayerOp){
-					tell(ODTGen.map((EntityPlayerMP)sender, 10), sender);
+					tell(ODTGen.map(sender.getEntityWorld(), 10, px, pz), sender);
 				}else{
 					System.out.println("cmd "+c+" not found");
 					tell(getCommandUsage(sender), sender);
@@ -79,15 +81,17 @@ public class ODTCommand extends CommandBase{
 			}
 		}
 		if(names.size()>0){
-			tell("The earth here seems to be rich in "+names.get(XorShift.genericPRNG.nextInt(names.size()))+".",player); //choose one
+			tell("You find traces of "+names.get(XorShift.genericPRNG.nextInt(names.size()))+".",player); //choose one
 		}else{
-			tell("You don't find anything of interest.",player);
+			tell("You don't find anything special.",player);
 		}
 	}
 	
 	public static void tell(String text, ICommandSender sender){
-		IChatComponent msg=new ChatComponentText(text);
-		sender.addChatMessage(msg);
+		for(String line:text.split("\n")){
+			IChatComponent msg=new ChatComponentText(line);
+			sender.addChatMessage(msg);
+		}
 	}
 	
 	public static boolean playerSuccessfullyCharged(EntityPlayer player){

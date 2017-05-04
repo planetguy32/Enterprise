@@ -50,7 +50,7 @@ public class TileEntityCryoPump extends TEThermal implements IEnergyHandler{
 	}
 
 	@Override
-	public float getFractionRadiated() {
+	public float getRadiationToEnvironment() {
 		int energyToUse=energy/100;
 		energy-=energyToUse;
 		return energyToUse * BLMBalance.RADIATION_CRYO_PUMP;

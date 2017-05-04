@@ -59,7 +59,7 @@ public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid
 		if(voltsTransportedLastTick>meta*30){
 			return true;
 		}
-		heat+=amps/30;
+		thermalEnergy +=amps/30;
 		return false;
 	}
 
@@ -69,7 +69,7 @@ public class TileRFGrid extends TEThermal implements IEnergyReceiver, IPowerGrid
 	}
 
 	@Override
-	public float getFractionRadiated() {
+	public float getRadiationToEnvironment() {
 		return 0;
 	}
 

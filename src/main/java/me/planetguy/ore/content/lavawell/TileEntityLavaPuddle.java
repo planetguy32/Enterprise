@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
+import me.planetguy.lib.util.Debug;
 import me.planetguy.ore.content.ODTContentPlugin;
 import me.planetguy.ore.gen.BlockMeta;
 import me.planetguy.ore.gen.ODTGen;
@@ -41,14 +42,14 @@ public class TileEntityLavaPuddle extends TEThermal{
 	}
 
 	public TileEntityLavaPuddle(){
-		super(MAXHEAT);
+		super();
+		this.thermalEnergy = this.thermalMass * MAXHEAT;
 	}
 
 	public void updateEntity(){
 		super.updateEntity();
 		if(Math.random()<0.05) {
 			doBreaking();
-			heat--;
 		}
 	}
 
@@ -57,7 +58,7 @@ public class TileEntityLavaPuddle extends TEThermal{
 	}
 
 	public void doBreaking(){
-		if(heat>BREAK_HEAT){
+		if(getTemperature()>BREAK_HEAT){
 			for(int dx=-1; dx<=1; dx++){
 				for(int dy=-1; dy<=2; dy++){
 					for(int dz=-1; dz<=1; dz++){
@@ -66,7 +67,7 @@ public class TileEntityLavaPuddle extends TEThermal{
 					}
 				}
 			}
-		}else if(heat<FREEZING_POINT){
+		}else if(getTemperature()<FREEZING_POINT){
 			BlockMeta imp=ODTGen.getOre(worldObj, xCoord/16, zCoord/16);
 			if(imp!=null)
 				worldObj.setBlock(xCoord, yCoord, zCoord, imp.block, imp.meta, 0x03);
@@ -106,24 +107,25 @@ public class TileEntityLavaPuddle extends TEThermal{
 			else if(id==Blocks.dirt)
 				worldObj.setBlock(x, y, z, Blocks.sand);
 			else if(id==Blocks.stonebrick)
-				worldObj.setBlockMetadataWithNotify(x, y, z, 2, 0x02);
+				worldObj.setBlockMetadataWithNotify(x, y, z, 2, 0x03);
 			else if(id==Blocks.flowing_water || id==Blocks.water){
 				worldObj.setBlock(x, y, z, Blocks.air);
-				heat-=10;
+				thermalEnergy -= 10*this.getMass();
 			}else if(worldObj.getTileEntity(x,y,z)!=null){
 				worldObj.setBlock(x, y, z, ODTContentPlugin.tileEntity, 6, 2);//burned block
 			}else {
 				int heatResistance=heatResistance(x,y,z);
-				if(heatResistance*3000 < heat)
-					worldObj.setBlock(x, y, z, Blocks.flowing_lava, 2, 0x02);
-				heat-=heatResistance;
+				if(heatResistance < (getTemperature()-300) / 1000) {
+					worldObj.setBlock(x, y, z, Blocks.flowing_lava, 2, 0x03);
+					thermalEnergy -= heatResistance * 1000;
+				}
 			}
 	}
 
-	public void extrudeLava(int oldMax){
-		int leastHeat=Math.min(oldMax, (int)(heat/1000));
-		heat += (oldMax-leastHeat);
-		int max=leastHeat + ((int)heat) % MAXHEAT;
+	public void extrudeLava(int max){
+		//Make lava sticky if it gets cold
+		//if((getTemperature()-1000)/ 1000 < max)
+		//	max = (int)((getTemperature()-1000)/ 1000);
 		if(max<=0)
 			return;
 		paths[0].coords=new ChunkCoordinates(xCoord, yCoord-1, zCoord);
@@ -157,14 +159,14 @@ public class TileEntityLavaPuddle extends TEThermal{
 		if(b==BlockLavaMachinery.instance
 				|| b.getExplosionResistance(null) > 10000
 				|| b.getBlockHardness(worldObj, x, y, z) > 10000)
-			return Integer.MAX_VALUE;
+			return Integer.MAX_VALUE -1;
 		if(b.isAir(worldObj, x, y, z))
-			return 0;
+			return 1;
 		if(melty.contains(worldObj.getBlock(x, y, z)))
 			return 4;
 		if(Blocks.fire.getFlammability(b) != 0)
-			return 3;
-		return 2;
+			return 2;
+		return 3;
 	}
 
 
@@ -195,7 +197,7 @@ public class TileEntityLavaPuddle extends TEThermal{
 	}
 
 	@Override
-	public float getFractionRadiated() {
+	public float getRadiationToEnvironment() {
 		return BLMBalance.RADIATION_LAVA_POOL;
 	}
 

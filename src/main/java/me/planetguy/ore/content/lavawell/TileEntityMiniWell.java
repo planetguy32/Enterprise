@@ -23,7 +23,7 @@ public class TileEntityMiniWell extends TEThermal {
 					)
 				worldObj.setBlock(xCoord, yCoord+1, zCoord, ODTContentPlugin.tileEntity, 2, 0x02);
 		}else{
-			((TileEntityLavaPuddle)lavaPuddle).extrudeLava(5);//heat/500);
+			((TileEntityLavaPuddle)lavaPuddle).extrudeLava(5);
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class TileEntityMiniWell extends TEThermal {
 	}
 
 	@Override
-	public float getFractionRadiated() {
+	public float getRadiationToEnvironment() {
 		return BLMBalance.RADIATION_MINI_WELL;
 	}
 

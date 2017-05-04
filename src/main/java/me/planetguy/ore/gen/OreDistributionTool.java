@@ -39,7 +39,7 @@ public class OreDistributionTool {
 
 	public static boolean allowProspecting;
 	
-	public static double chanceOfProspectingFailure=0.5;
+	public static double chanceOfProspectingFailure=0;
 
 	public static boolean removeTraceOres;
 	
@@ -72,12 +72,12 @@ public class OreDistributionTool {
 		allowProspecting=cfg.get("prospecting", "AllowProspectingChatCommand", true).getBoolean(true);
 		oresStr=Arrays.asList(cfg.get("general", "oreIDs", oresStr.toArray(new String[0])).getStringList());
 		removeTraceOres=cfg.get("general", "removeAllExistingOreSeams", false).getBoolean(false);
-		traceOreFactor=cfg.get("general", "globalProbabilityFactorTraceOres", 0.0).getDouble(0.0);
+		traceOreFactor=cfg.get("general", "probabilityOfTraceOres", 0.0).getDouble(0.0);
 		for(String id:oresStr){
 			id=id.replace("tile.", "");
 			try{
 				BlockMeta bm=new BlockMeta(id);
-				Property prop=cfg.get("ores", ""+id, "0.0% of stone, in 0.0% of chunks");
+				Property prop=cfg.get("ores", ""+id, "0.0% of stone, in 0.0% of chunks, layers 0 to 255");
 				//add block name to config file by decoding ID-meta pair
 				prop.comment=getDisplayName(bm);
 				oreMap.put(bm, new OreEntry(prop.getString()));

@@ -36,7 +36,7 @@ public class ItemThermometer extends ItemBase {
 	public static float getTemperature(World w, int x, int y, int z, int side){
 		TileEntity te=w.getTileEntity(x,y,z);
 		if(te instanceof TEThermal){
-			return ((TEThermal)te).getHeat();
+			return ((TEThermal)te).getTemperature();
 		}else
 			return -1;
 	}
@@ -52,7 +52,7 @@ public class ItemThermometer extends ItemBase {
 	public static boolean isActivelyOverheating(World w, int x, int y, int z, int side){
 		TileEntity te=w.getTileEntity(x,y,z);
 		if(te instanceof TEThermal){
-			return ((TEThermal)te).getHeat()>((TEThermal)te).meltingTemp();
+			return ((TEThermal)te).getTemperature()>((TEThermal)te).meltingTemp();
 		}else
 			return false;
 	}
@@ -65,7 +65,7 @@ public class ItemThermometer extends ItemBase {
 	    		int zm=Minecraft.getMinecraft().objectMouseOver.blockZ;
 	    		TileEntity te=w.getTileEntity(xm,ym,zm);
 	    		if(te instanceof TEThermal){
-	    			stk.setItemDamage((int) (this.getMaxDamage()-((TEThermal)te).getHeat()));
+	    			stk.setItemDamage((int) (this.getMaxDamage()-((TEThermal)te).getTemperature()));
 	    		}
 	    	}
 		}else
